@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="icon" href="../../favicon.ico">-->
+
+    <title>kubernetes-fagdag cheatsheet</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/starter-template.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Cheatsheet</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Avskrudde greier</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Er da noko her?</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Her er da ikkje noko</a>
+              <a class="dropdown-item" href="#">Ikkje her heller</a>
+              <a class="dropdown-item" href="#">Samma her</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>kubernetes-fagdag cheatsheet</h1>
+        <p class="lead">Her er en liste over kommandoer knyttet til ulike ressurs typer i kubernetes, samt azure shell kommandoer for å logge på subscription vi har tilgjengelig.</p>
+
+        <h2>Azure shell kommandoer</h2>
+        <table class="table text-left">
+          <thead>
+            <tr>
+              <th scope="col">Mål</th>
+              <th scope="col">Kommando</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Logge på</th>
+              <td class="code-segment">az login </td>
+            </tr>
+            <tr>
+              <th scope="row">Vise aktiv subscription</th>
+              <td class="code-segment">az account show </td>
+            </tr>
+            <tr>
+              <th scope="row">Liste tilgjengelige subscriptions</th>
+              <td class="code-segment">az account list </td>
+            </tr>
+            <tr>
+              <th scope="row">Installere kubectl lokalt</th>
+              <td class="code-segment">az aks install-cli --install-location C:\Users\Username\kubectl.exe</td>
+            </tr>
+            <tr>
+              <th scope="row">Hente Azure kubectl context</th>
+              <td>az aks get-credentials -g fagdag -n chaos</td>
+            </tr>
+          </tbody>
+        </table>
+      </hr>
+
+      <h2>Namespace shell kommandoer</h2>
+      <p>Husk at namespace navn kun kan innehold a-z, A-Z, 0-9 og bindestrek (-)</p>
+
+      <table class="table text-left">
+        <thead>
+          <tr>
+            <th scope="col">Mål</th>
+            <th scope="col">Kommando</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Liste ut namespace</th>
+            <td class="code-segment">kubeclt get namespaces</td>
+          </tr>
+          <tr>
+            <th scope="row">Lage nytt namespace</th>
+            <td class="code-segment">kubectl create namespace namespaceNavn</td>
+          </tr>
+          <tr>
+            <th scope="row">Sette default namespace</th>
+            <td class="code-segment">kubectl config set-context chaos --namespace=namespaceNavn</td>
+          </tr>
+          <tr>
+            <th scope="row">Slette namespace</th>
+            <td class="code-segment">kubectl delete namespace namespaceNavn</td>
+          </tr>
+          <tr>
+            <th scope="row">Installere kubectl lokalt</th>
+            <td class="code-segment">az aks install-cli --install-location C:\Users\Username\kubectl.exe</td>
+          </tr>
+          <tr>
+            <th scope="row">Hente Azure kubectl context</th>
+            <td>az aks get-credentials -g fagdag -n chaos</td>
+          </tr>
+        </tbody>
+      </table>
+    </hr>
+
+
+        <h2>Pod kommandoer</h2>
+        <table class="table text-left">
+          <thead>
+            <tr>
+              <th scope="col">Mål</th>
+              <th scope="col">Kommando</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Liste ut alle</th>
+              <td class="code-segment">kubectl get pods </td>
+            </tr>
+            <tr>
+              <th scope="row">Liste ut alle i et namespace</th>
+              <td class="code-segment">kubectl get --namespace=myNamespace pods </td>
+            </tr>
+            <tr>
+              <th scope="row">Slette spesifikke i et namespace</th>
+              <td>kubectl delete --namespace=myNamespace pods podNavn</td>
+            </tr>
+            <tr>
+              <th scope="row">Slette alle i et namespace</th>
+              <td>kubectl delete --namespace=myNamespace pods --all</td>
+            </tr>
+          </tbody>
+        </table>
+      </hr>
+
+        <h2>Deployment kommandoer</h2>
+        <table class="table text-left">
+          <thead>
+            <th scope="col">Mål</th>
+            <th scope="col">Kommando</th>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Deploye denne appen</th>
+              <td>kubectl run cheat --image=coderpews/kubernetes-cheat:0.3 --port=80 </td>
+            </tr>
+
+            <tr>
+              <th scope="row">Eksponere på azure</th>
+              <td>kubectl expose deployment cheat --type=LoadBalancer</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Liste ut alle</th>
+              <td>kubectl get deployments </td>
+            </tr>
+            <tr>
+              <th scope="row">Liste ut alle i et namespace</th>
+              <td>kubectl get --namespace=myNamespace deployments </td>
+            </tr>
+            <tr>
+              <th scope="row">Slette spesifikke i et namespace</th>
+              <td>kubectl delete --namespace=myNamespace deployments deploymentNavn</td>
+            </tr>
+            <tr>
+              <th scope="row">Slette alle i et namespace</th>
+              <td>kubectl delete --namespace=myNamespace deployments --all</td>
+            </tr>
+          </tbody>
+        </table>
+      </hr>
+
+      <h2>Service kommandoer</h2>
+      <table class="table text-left">
+        <thead>
+          <th scope="col">Mål</th>
+          <th scope="col">Kommando</th>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Liste ut alle</th>
+            <td>kubectl get services </td>
+          </tr>
+          <tr>
+            <th scope="row">Liste ut alle i et namespace</th>
+            <td>kubectl get --namespace=myNamespace services </td>
+          </tr>
+          <tr>
+            <th scope="row">Slette spesifikke i et namespace</th>
+            <td>kubectl delete --namespace=myNamespace service serviceNavn</td>
+          </tr>
+          <tr>
+            <th scope="row">Slette alle i et namespace</th>
+            <td>kubectl delete --namespace=myNamespace services --all</td>
+          </tr>
+        </tbody>
+      </table>
+    </hr>
+
+    <h2>Minikube kommandoer</h2>
+    <table class="table text-left">
+      <thead>
+        <th scope="col">Mål</th>
+        <th scope="col">Kommando</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Installere Windows</th>
+          <td>curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.25.0/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/</td>
+        </tr>
+        <tr>
+          <th scope="row">Installere på mac</th>
+          <td>curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.25.0/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/</td>
+        </tr>
+        <tr>
+          <th scope="row">Installere på linux</th>
+          <td>Last ned minikube (minikube-installer.exe) fra https://github.com/kubernetes/minikube/releases (Alternativt, last ned minikube-windows-amd64.exe filen, rename til minikube.exe og legg til i PATH)</td>
+        </tr>
+        <tr>
+          <th scope="row">Starte minikube</th>
+          <td>minikube start</td>
+        </tr>
+        <tr>
+          <th scope="row">Eksponere en service i netteleser</th>
+          <td>minikube service serviceName</td>
+        </tr>
+        <tr>
+          <th scope="row">Vise url til service</th>
+          <td>minikube service serviceName --url </td>
+        </tr>
+        <tr>
+          <th scope="row">Vise dashboard</th>
+          <td>minikube dashboard</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </hr>
+
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+
+th {
+  color: darkolivegreen;
+}
+
+h1 {
+  color: blueviolet;
+}
+
+h2 {
+  padding-top: 4rem;
+  color: burlywood;
+  padding-bottom: 2rem;
+}
+
+tr td {
+  font-family: Courier;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: chocolate;
+
+}
