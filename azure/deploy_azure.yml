@@ -8,10 +8,18 @@ spec:
     metadata:
       labels:
         app: azure-vote-back
+        env: prod
     spec:
       containers:
       - name: azure-vote-back
         image: redis
+#        resources:
+#          requests:
+#            cpu: "0.15"
+#            memory: 256Mi
+#          limits:
+#            memory: 512Mi
+#            cpu: "0.25"
         ports:
         - containerPort: 6379
           name: redis      
@@ -36,10 +44,18 @@ spec:
     metadata:
       labels:
         app: azure-vote-front
+        env: prod
     spec:
       containers:
       - name: azure-vote-front
         image: microsoft/azure-vote-front:v1
+#        resources:
+#          requests:
+#            cpu: "0.15"
+#            memory: 256Mi
+#          limits:
+#            memory: 512Mi
+#            cpu: "0.25"
         ports:
         - containerPort: 80
         env:

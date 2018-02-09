@@ -25,10 +25,29 @@
       </button>
       <a class="navbar-brand" href="#">Cheatsheet</a>
 
+
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#azShell">Azure Shell<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#namespace">Namespace<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#pod">Pod<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#deploy">Deployment<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#service">Service<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#minikube">Minikube<span class="sr-only"></span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Avskrudde greier</a>
@@ -51,7 +70,7 @@
         <h1>kubernetes-fagdag cheatsheet</h1>
         <p class="lead">Her er en liste over kommandoer knyttet til ulike ressurs typer i kubernetes, samt azure shell kommandoer for å logge på subscription vi har tilgjengelig.</p>
 
-        <h2>Azure shell kommandoer</h2>
+        <h2 id="azShell">Azure shell kommandoer</h2>
         <table class="table text-left">
           <thead>
             <tr>
@@ -81,6 +100,10 @@
               <td>az aks get-credentials -g fagdag -n chaos</td>
             </tr>
             <tr>
+              <th scope="row">Hente Azure kubectl context til fil</th>
+              <td>az aks get-credentials -g fagdag -n chaos -f ./filnavn </td>
+            </tr>
+            <tr>
               <th scope="row">Åpne dashboard i nettleser</th>
               <td>az aks browse -g fagdag -n chaos</td>
             </tr>
@@ -88,7 +111,7 @@
         </table>
       </hr>
 
-      <h2>Namespace shell kommandoer</h2>
+      <h2 id="namespace">Namespace shell kommandoer</h2>
       <p>Husk at namespace navn kun kan innehold a-z, A-Z, 0-9 og bindestrek (-)</p>
 
       <table class="table text-left">
@@ -115,20 +138,12 @@
             <th scope="row">Slette namespace</th>
             <td class="code-segment">kubectl delete namespace namespaceNavn</td>
           </tr>
-          <tr>
-            <th scope="row">Installere kubectl lokalt</th>
-            <td class="code-segment">az aks install-cli --install-location C:\Users\Username\kubectl.exe</td>
-          </tr>
-          <tr>
-            <th scope="row">Hente Azure kubectl context</th>
-            <td>az aks get-credentials -g fagdag -n chaos</td>
-          </tr>
         </tbody>
       </table>
     </hr>
 
 
-        <h2>Pod kommandoer</h2>
+        <h2 id="pod">Pod kommandoer</h2>
         <table class="table text-left">
           <thead>
             <tr>
@@ -157,7 +172,7 @@
         </table>
       </hr>
 
-        <h2>Deployment kommandoer</h2>
+        <h2 id="deploy">Deployment kommandoer</h2>
         <table class="table text-left">
           <thead>
             <th scope="col">Mål</th>
@@ -194,7 +209,7 @@
         </table>
       </hr>
 
-      <h2>Service kommandoer</h2>
+      <h2 id="service">Service kommandoer</h2>
       <table class="table text-left">
         <thead>
           <th scope="col">Mål</th>
@@ -221,7 +236,7 @@
       </table>
     </hr>
 
-    <h2>Minikube kommandoer</h2>
+    <h2 id="minikube">Minikube kommandoer</h2>
     <table class="table text-left">
       <thead>
         <th scope="col">Mål</th>
