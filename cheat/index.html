@@ -111,6 +111,31 @@
         </table>
       </hr>
 
+      <h2 id="state">Kubectl for desired state</h2>
+      <p>Her er kommandoer for å deploye ønsket tilstand på en komponent</p>
+      <table class="table text-left">
+        <thead>
+          <tr>
+            <th scope="col">Mål</th>
+            <th scope="col">Kommando</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Deploye innhold i yml</th>
+            <td class="code-segment">kubectl apply -f filnavn.yml</td>
+          </tr>
+          <tr>
+            <th scope="row">Deploye innhold i yml</th>
+            <td class="code-segment">kubectl create -f filnavn.yml</td>
+          </tr>
+          <tr>
+              <th scope="row">Fjerne innhold i yml</th>
+              <td class="code-segment">kubectl delete -f filnavn.yml</td>
+            </tr>
+        </tbody>
+        </table>
+
       <h2 id="namespace">Namespace shell kommandoer</h2>
       <p>Husk at namespace navn kun kan innehold a-z, A-Z, 0-9 og bindestrek (-)</p>
 

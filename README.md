@@ -11,7 +11,7 @@ Kjøring av en enkelt pod, Oppsett av cats and dogs applikasjonen til fagdag. Ha
 
 
 ## Kjøre cheatsheet på kubernetes
-kubectl run cheat --port=80 --namespace=ditt-namespace --image=coderpews/kubernetes-cheat:0.2
+kubectl run cheat --port=80 --namespace=ditt-namespace --image=sonatconsulting/kubernetes-cheat:0.5
 
 ## Bygge og kjøre cheatsheet container lokalt
 docker build -t cheat .
@@ -27,7 +27,7 @@ kubectl get nodes
 
 ### Azure oppgave 2
 
-Lage namespace
+Lage namespace. Sliter du med å finne namespace navn, kan du bruke denne tjenesten: https://mrsharpoblunto.github.io/foswig.js/
 
 ```
 kubectl create namepsace "ditt-namespace-navn"
