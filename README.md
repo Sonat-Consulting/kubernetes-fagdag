@@ -33,10 +33,27 @@ Lage namespace. Sliter du med å finne namespace navn, kan du bruke denne tjenes
 kubectl create namepsace "ditt-namespace-navn"
 
 kubectl config set-context $(kubectl config current-context) --namespace=ditt-namespace-navn
-
 ```
 
 ### Azure oppgave 3
+Kjøre deployment via kommandolinje
+
+```
+kubectl run cheatsheet --image=sonatconsulting/kubernetes-cheat:0.1 --port=80
+kubectl delete deployment
+kubectl run cheatsheet --image=coderpews/kubernetes-cheat:0.1 --port=80
+kubectl get pod
+kubectl port-forward pod-name 5000:80
+kubectl scale deployment/cheetsheet --replicas=2
+kubectl set image deployment/cheatsheet cheatsheet=image=sonatconsulting/kubernetes-cheat:0.8
+kubectl expose deployment cheetsheet --port=80 --type=LoadBalancer
+kubectl get services
+
+
+```
+
+
+### Azure oppgave 4
 
 Deploye applikasjonen
 
