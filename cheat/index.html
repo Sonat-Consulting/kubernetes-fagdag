@@ -80,6 +80,10 @@
               <th scope="row">Hente Azure kubectl context</th>
               <td>az aks get-credentials -g fagdag -n chaos</td>
             </tr>
+            <tr>
+              <th scope="row">Åpne dashboard i nettleser</th>
+              <td>az aks browse -g fagdag -n chaos</td>
+            </tr>
           </tbody>
         </table>
       </hr>
@@ -225,17 +229,18 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row">Installere Windows</th>
-          <td>curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.25.0/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/</td>
-        </tr>
-        <tr>
-          <th scope="row">Installere på mac</th>
-          <td>curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.25.0/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/</td>
-        </tr>
-        <tr>
-          <th scope="row">Installere på linux</th>
+          <th scope="row">Installere på windows</th>
           <td>Last ned minikube (minikube-installer.exe) fra https://github.com/kubernetes/minikube/releases (Alternativt, last ned minikube-windows-amd64.exe filen, rename til minikube.exe og legg til i PATH)</td>
         </tr>
+        <tr>
+          <th scope="row">Installere mac</th>
+          <td>curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.25.0/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/</td>
+        </tr>
+        <tr>
+          <th scope="row">Installere på Linux</th>
+          <td>curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.25.0/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/</td>
+        </tr>
+
         <tr>
           <th scope="row">Starte minikube</th>
           <td>minikube start</td>

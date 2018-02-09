@@ -16,3 +16,31 @@ kubectl run cheat --port=80 --namespace=ditt-namespace --image=coderpews/kuberne
 ## Bygge og kjøre cheatsheet container lokalt
 docker build -t cheat .
 docker run -d --name cheat -p 80:80 cheat
+
+### Azure oppgave 1
+Hente context fra azure-cli
+
+```
+az aks get-credentials -g fagdag -n chaos
+kubectl get nodes
+```
+
+### Azure oppgave 2
+
+Lage namespace
+
+```
+kubectl create namepsace "ditt-namespace-navn"
+
+kubectl config set-context $(kubectl config current-context) --namespace=ditt-namespace-navn
+
+```
+
+### Azure oppgave 3
+
+Deploye applikasjonen
+
+```
+cd azure
+kubectl apply -f deploy_azure.yml
+```
