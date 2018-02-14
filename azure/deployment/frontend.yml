@@ -10,6 +10,8 @@ spec:
       labels:
         app: azure-vote-front
     spec:
+      nodeSelector:
+        tier: frontend
       containers:
       - name: azure-vote-front
         image: microsoft/azure-vote-front:v1

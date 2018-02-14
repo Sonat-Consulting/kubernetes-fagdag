@@ -1,0 +1,28 @@
+apiVersion: "v1"
+kind: "PersistentVolume"
+metadata:
+  name: "fagdag"
+  labels:
+    volume: "fagdag-volume"
+spec:
+  capacity:
+    storage: "1Gi" 
+  accessModes:
+    - "ReadWriteMany"
+  azureDisk: 
+    diskName: fagdag.vhd
+    diskURI: https://kubernetesfagdag.blob.core.windows.net/fagdagdisk.vhd
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fagdag-pvc
+  annotations:
+    volume.beta.kubernetes.io/storage-class: accounthdd
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+    

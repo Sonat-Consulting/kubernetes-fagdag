@@ -9,9 +9,12 @@ spec:
       labels:
         app: azure-vote-back
     spec:
+      nodeSelector:
+        tier: backend  
       containers:
       - name: azure-vote-back
         image: redis
         ports:
         - containerPort: 6379
-          name: redis      
+          name: redis    
+        
