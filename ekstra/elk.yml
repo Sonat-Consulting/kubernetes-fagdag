@@ -1,0 +1,115 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  labels:
+    app: elasticsearch
+spec:
+  ports:
+  - port: 9200
+    name: service
+  - port: 9300
+    name: cluster
+  clusterIP: None
+  selector:
+    app: elasticsearch
+---
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: elasticsearch
+spec:
+  selector:
+    matchLabels:
+      app: elasticsearch 
+  serviceName: "elasticsearch"
+  replicas: 3 
+  template:
+    metadata:
+      labels:
+        app: elasticsearch 
+    spec:
+      terminationGracePeriodSeconds: 10
+      initContainers:
+      - name: set-vm-max-map-count
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        command: ['sysctl', '-w', 'vm.max_map_count=262144']
+        securityContext:
+          privileged: true
+      containers:
+      - name: elasticsearch
+        image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.1
+        ports:
+        - containerPort: 9200
+          name: service
+        - containerPort: 9300
+          name: cluster
+        env:
+          - name: discovery.zen.ping.unicast.hosts
+            value: "elasticsearch-0.elasticsearch.[TODO: Fyll inn namespace navnet ditt her].svc.cluster.local,elasticsearch-1.elasticsearch.[TODO: Fyll inn namespace navnet ditt her].svc.cluster.local,elasticsearch-2.elasticsearch.[TODO: Fyll inn namespace navnet ditt her].svc.cluster.local"
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: CLUSTER_NAME
+            value: kosekroken
+          - name: NODE_MASTER
+            value: "false"
+          - name: NODE_INGEST
+            value: "false"
+          - name: HTTP_ENABLE
+            value: "false"
+          - name: ES_JAVA_OPTS
+            value: -Xms256m -Xmx256m        
+ #       volumeMounts:
+ #         - mountPath: /usr/share/elasticsearch/data
+ #           name: elastic-data
+ #     volumes:
+ #       - name: elastic-data
+ #         hostPath:
+ #           path: /data/volumes/elasticsearch
+ #           type: DirectoryOrCreate
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana
+  labels:
+    app: kibana
+spec:
+  ports:
+    - port: 5601
+      name: service
+  selector:
+    app: kibana
+
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: kibana
+  labels:
+    app: kibana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+        - name: kibana
+          image: docker.elastic.co/kibana/kibana-oss:6.2.1
+          ports:
+            - containerPort: 5601
+              name: service
+          env:
+            - name: SERVER_NAME
+              value: "kibana"
+            - name: ELASTICSEARCH_URL
+              value: "http://elasticsearch:9200"
