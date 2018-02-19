@@ -3,21 +3,16 @@ kind: Pod
 metadata:
   name: two-containers
 spec:
-
   restartPolicy: Never
-
   volumes:
   - name: shared-data
     emptyDir: {}
-
   containers:
-
   - name: nginx-container
     image: nginx
     volumeMounts:
     - name: shared-data
       mountPath: /usr/share/nginx/html
-
   - name: debian-container
     image: debian
     volumeMounts:

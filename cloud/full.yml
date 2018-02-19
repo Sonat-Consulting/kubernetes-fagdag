@@ -1,17 +1,17 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: azure-vote-back
+  name: backend
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: azure-vote-back
+        app: backend
         env: prod
     spec:
       containers:
-      - name: azure-vote-back
+      - name: backend
         image: redis
         livenessProbe:
           exec:
@@ -34,27 +34,27 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-back
+  name: backend
 spec:
   ports:
   - port: 6379
   selector:
-    app: azure-vote-back
+    app: backend
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: azure-vote-front
+  name: frontend
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: azure-vote-front
+        app: frontend
         env: prod
     spec:
       containers:
-      - name: azure-vote-front
+      - name: frontend
         image: microsoft/azure-vote-front:v1
         livenessProbe:
           httpGet:
@@ -73,15 +73,15 @@ spec:
         - containerPort: 80
         env:
         - name: REDIS
-          value: "azure-vote-back"
+          value: "backend"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-front
+  name: frontend
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: azure-vote-front
+    app: frontend
