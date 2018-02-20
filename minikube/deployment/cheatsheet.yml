@@ -1,0 +1,29 @@
+apiVersion: apps/v1 # apps/v1beta1
+kind: Deployment
+metadata:
+  name: cheatsheet
+  labels:
+    app: cheatsheet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cheatsheet
+template:
+  metadata:
+    labels:
+      app: cheatsheet      
+  spec:
+    containers:
+    - name: cheatsheet
+      image: sonatconsulting/kubernetes-cheat:0.8
+      ports:
+      - containerPort: 80
+        name: web    
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 3
+        periodSeconds: 3
+       
