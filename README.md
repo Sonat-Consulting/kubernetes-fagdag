@@ -4,7 +4,7 @@ Kjøring av en enkelt pod, Oppsett av cats and dogs applikasjonen til fagdag. Ha
 
 ### Minikube oppgave 
 
-##Start minikube og list servicer
+## Start minikube og list servicer
 ```
 minikube start
 ```
@@ -14,7 +14,7 @@ Se hvilke servicer som er eksponert
 minikube service list
 ```
 
-##Deploy backend
+## Deploy backend
 ```
 kubectl create -f backend.yml
 ```
@@ -29,7 +29,7 @@ Sjekk at pod finnes
 kubectl get pod
 ```
 
-##Deploy frontend
+## Deploy frontend
 ```
 kubectl create -f frontend.yml
 ```
@@ -49,13 +49,13 @@ Sjekk at servicer er eksponert
 kubectl get service
 ```
 
-##Sjekk at samme servicer finnes i minikube, og åpne frontenden i browser
+## Sjekk at samme servicer finnes i minikube, og åpne frontenden i browser
 ```
 minikube service list
 minikube service azure-vote-front
 ```
 
-
+### Cheatsheet 
 ## Kjøre cheatsheet på kubernetes
 kubectl run cheat --port=80 --namespace=ditt-namespace --image=sonatconsulting/kubernetes-cheat:0.5
 
