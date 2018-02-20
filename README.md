@@ -2,11 +2,57 @@
 Kjøring av en enkelt pod, Oppsett av cats and dogs applikasjonen til fagdag. Har oppsett til minikube og azure
 
 
-## Minikube
+### Minikube oppgave 
+
+##Start minikube og list servicer
 ```
-  kubectl create namespace "unikt_navn"
-  kubectl run cheat --namespace="unikt_navn" --port=80 coderpews/kubernetes-cheat:0.1
-  kubectl config set-context $(kubectl config current-context) --namespace=unikt_navn
+minikube start
+```
+
+Se hvilke servicer som er eksponert
+```
+minikube service list
+```
+
+##Deploy backend
+```
+kubectl create -f backend.yml
+```
+
+Sjekk at deploy finnes
+```
+kubectl get deploy
+```
+
+Sjekk at pod finnes
+```
+kubectl get pod
+```
+
+##Deploy frontend
+```
+kubectl create -f frontend.yml
+```
+
+Sjekk at deploy finnes
+```
+kubectl get deploy
+```
+
+Sjekk at pod finnes
+```
+kubectl get pod
+```
+
+Sjekk at servicer er eksponert
+```
+kubectl get service
+```
+
+##Sjekk at samme servicer finnes i minikube, og åpne frontenden i browser
+```
+minikube service list
+minikube service azure-vote-front
 ```
 
 
@@ -33,7 +79,7 @@ Lage namespace. Sliter du med å finne namespace navn, kan du bruke denne tjenes
 kubectl create namepsace "ditt-namespace-navn"
 
 kubectl config set-context $(kubectl config current-context) --namespace=ditt-namespace-navn
-```
+	```
 
 ### Azure oppgave 3
 Kjøre deployment via kommandolinje
