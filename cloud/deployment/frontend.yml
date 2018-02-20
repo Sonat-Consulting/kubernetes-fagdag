@@ -2,21 +2,21 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: azure-vote-front
+  name: frontend
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: azure-vote-front
+        app: frontend
     spec:
       nodeSelector:
         tier: frontend
       containers:
-      - name: azure-vote-front
+      - name: frontend
         image: microsoft/azure-vote-front:v1
         ports:
         - containerPort: 80
         env:
         - name: REDIS
-          value: "azure-vote-back"
+          value: "backend"
