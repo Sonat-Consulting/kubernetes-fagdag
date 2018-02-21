@@ -21,7 +21,6 @@ spec:
   selector:
     matchLabels:
       app: kuard 
-  serviceName: "kuard"
   replicas: 2
   template:
     metadata:
@@ -30,7 +29,7 @@ spec:
     spec:
       containers:
       - name: kuard
-        image: gcr.io/kuar-demo/kuard-amd64
+        image: gcr.io/kuar-demo/kuard-amd64:1
         ports:
         - containerPort: 8080
 
