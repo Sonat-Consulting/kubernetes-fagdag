@@ -1,16 +1,16 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: azure-vote-back
+  name: backend
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: azure-vote-back
+        app: backend
     spec:
       containers:
-      - name: azure-vote-back
+      - name: backend
         image: redis
         ports:
         - containerPort: 6379
@@ -19,9 +19,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-back
+  name: backend
 spec:
   ports:
   - port: 6379
   selector:
-    app: azure-vote-back
+    app: backend

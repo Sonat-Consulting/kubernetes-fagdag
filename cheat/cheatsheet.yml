@@ -14,16 +14,6 @@ template:
     labels:
       app: cheatsheet      
   spec:
-  # volumes:
-  #   - name: fagdag
-  #     azureFile:
-  #       secretName: azure-secret
-  #       shareName: fagdag
-  #       readOnly: true
-    #volumes:
-    #  - name: fagdagdisk
-    #    persistentVolumeClaim:
-    #      claimName: fagdagdisk
     containers:
     - name: cheatsheet
       image: sonatconsulting/kubernetes-cheat:0.8
@@ -36,9 +26,6 @@ template:
           port: 80
         initialDelaySeconds: 3
         periodSeconds: 3
-    #  volumeMounts:
-    #    - name: fagdag
-    #      mountPath: /usr/share/nginx/html
  
 
         
