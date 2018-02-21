@@ -52,6 +52,6 @@ kubectl get service
 ## Sjekk at samme servicer finnes i minikube, og åpne frontenden i browser
 ```
 minikube service list
-minikube service azure-vote-front
+minikube service frontend
 ```
 
