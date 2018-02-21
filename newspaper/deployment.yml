@@ -1,0 +1,56 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: newspaper-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: newspaper-app
+    spec:
+      containers:
+      - name: newspaper-app
+        image: coderpews/newspaper-app:0.9
+        ports:
+        - containerPort: 5000
+          name: api  
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: newspaper-app
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5000
+  selector:
+    app: newspaper-app  
+        
+---
+apiVersion: v1 # TODO: Make pod Legg inn apps/v1 for minikube
+kind: Pod
+metadata:
+  name: newspaper-client
+  labels:
+    app: newspaper-client
+spec:
+  containers:
+    - name: newspaper-client
+      image: sonatconsulting/newspaper-client:0.7
+      ports:
+        - containerPort: 80
+          name: web
+---    
+
+
+#apiVersion: v1
+#kind: Service
+#metadata:
+# name: newspaper-client
+#spec:
+#  type: ClusterIP
+#  ports:#
+#  - port: 80
+#  selector:
+#    app: newspaper-client
