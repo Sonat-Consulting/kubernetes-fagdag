@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -18,3 +17,14 @@ spec:
         env:
         - name: REDIS
           value: "backend"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: frontend
