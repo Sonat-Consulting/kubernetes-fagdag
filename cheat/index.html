@@ -56,49 +56,8 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>kubernetes-fagdag cheatsheet</h1>
+        <h1>kubernetes cheatsheet</h1>
         <p class="lead">Her er en liste over kommandoer knyttet til ulike ressurs typer i kubernetes, samt azure shell kommandoer for å logge på subscription vi har tilgjengelig.</p>
-
-        <h2 id="azShell">Azure shell kommandoer</h2>
-        <table class="table text-left">
-          <thead>
-            <tr>
-              <th scope="col">Mål</th>
-              <th scope="col">Kommando</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Logge på</th>
-              <td class="code-segment">az login </td>
-            </tr>
-            <tr>
-              <th scope="row">Vise aktiv subscription</th>
-              <td class="code-segment">az account show </td>
-            </tr>
-            <tr>
-              <th scope="row">Liste tilgjengelige subscriptions</th>
-              <td class="code-segment">az account list </td>
-            </tr>
-            <tr>
-              <th scope="row">Installere kubectl lokalt</th>
-              <td class="code-segment">az aks install-cli --install-location C:\Users\Username\kubectl.exe</td>
-            </tr>
-            <tr>
-              <th scope="row">Hente Azure kubectl context</th>
-              <td>az aks get-credentials -g fagdag -n chaos</td>
-            </tr>
-            <tr>
-              <th scope="row">Hente Azure kubectl context til fil</th>
-              <td>az aks get-credentials -g fagdag -n chaos -f ./filnavn </td>
-            </tr>
-            <tr>
-              <th scope="row">Åpne dashboard i nettleser</th>
-              <td>az aks browse -g fagdag -n chaos</td>
-            </tr>
-          </tbody>
-        </table>
-      </hr>
 
       <h2 id="state">Kubectl for desired state</h2>
       <p>Her er kommandoer for å deploye ønsket tilstand på en komponent</p>
